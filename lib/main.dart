@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
-import 'package:tododoo/views/zoomDrawer.dart';
+import 'package:tododoo/views/login_view.dart';
 
 final ZoomDrawerController z = ZoomDrawerController();
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginView(),
     );
   }
 }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tododoo/constant.dart';
+import 'package:tododoo/controller/login_controller.dart';
 import 'package:tododoo/main.dart';
 import 'package:tododoo/views/home_view.dart';
+import 'package:tododoo/views/login_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,6 +25,7 @@ class _HomePageState extends State<HomePage> {
       mainScreen: HomeView(),
       borderRadius: 24.0,
       showShadow: true,
+      shadowLayer1Color: customYellow,
       angle: -12.0,
       slideWidth: MediaQuery.of(context).size.width * .65,
       openCurve: Curves.easeInOut,
@@ -33,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+  var loginController = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +57,9 @@ class MenuScreen extends StatelessWidget {
                     child: Text(
                       "FN",
                       style: GoogleFonts.poppins(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w800,
-                          color: customBlack),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w800,
+                      ),
                     )),
                 Container(
                   margin: EdgeInsets.fromLTRB(0, 12, 0, 12),
@@ -102,6 +106,29 @@ class MenuScreen extends StatelessWidget {
                       color: Colors.white),
                   overflow: TextOverflow.clip,
                 ),
+
+                //create button logout
+                Container(
+                  margin: EdgeInsets.only(top: 12),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => LoginView()));
+                      loginController.logout();
+                    },
+                    child: Text(
+                      "Logout",
+                      style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        primary: customYellow,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                  ),
+                )
               ],
             )),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tododoo/controller/home_controller.dart';
+import 'package:tododoo/controller/login_controller.dart';
 import 'package:tododoo/views/addTask_view.dart';
 import 'package:tododoo/views/updateTask_view.dart';
 
@@ -10,6 +11,7 @@ import '../main.dart';
 
 class HomeView extends StatelessWidget {
   var controller = Get.put<HomeController>(HomeController());
+  var loginController = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class HomeView extends StatelessWidget {
             }));
           },
           child: const Icon(Icons.add, color: Colors.white),
-          backgroundColor: customBlue,
+          backgroundColor: customYellow,
         ),
         backgroundColor: const Color(0xFFF4F6FD),
         //create to do list
@@ -57,11 +59,18 @@ class HomeView extends StatelessWidget {
               ),
             ),
             Text(
-              "To Do Doo",
+              "Whats'up",
               style: GoogleFonts.poppins(
                   fontSize: 30,
                   fontWeight: FontWeight.w800,
                   color: customBlack),
+            ),
+            Text(
+              loginController.user.value.nama!,
+              style: GoogleFonts.poppins(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w800,
+                  color: customYellow),
             ),
             const SizedBox(
               height: 10,
@@ -180,7 +189,7 @@ class ListTask extends StatelessWidget {
                               icon: data.status! == false
                                   ? Icon(
                                       Icons.circle_outlined,
-                                      color: customPurple,
+                                      color: customYellow,
                                       size: 24,
                                     )
                                   : Icon(
