@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tododoo/constant.dart';
 import 'package:tododoo/models/login_model.dart';
 
 class LoginController extends GetxController {
@@ -14,7 +15,7 @@ class LoginController extends GetxController {
 
   Future<bool> login() async {
     Dio dio = Dio();
-    var res = await dio.get("http://10.0.2.2:3000/login");
+    var res = await dio.get("http://${ipAPI}:3000/login");
 
     User model = User.fromJson(res.data);
     model.data!.forEach((element) {

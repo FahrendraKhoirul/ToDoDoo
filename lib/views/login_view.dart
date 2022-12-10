@@ -111,6 +111,11 @@ class LoginView extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => HomePage()));
+                          } else {
+                            // snackbar failed login
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Login Failed"),
+                            ));
                           }
                         });
                       },

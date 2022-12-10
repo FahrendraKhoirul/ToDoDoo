@@ -7,3 +7,4 @@ Color customBlack = Color(0xFF020417);
 Color customGrey = Color(0xFFB8BACC);
 Color customBlue = Color(0xFF131F53);
 Color customYellow = Color(0xFFFFC90A);
+var ipAPI = "192.168.31.74";

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constant.dart';
 import '../models/task_model.dart';
 
 class HomeController extends GetxController {
@@ -19,11 +20,13 @@ class HomeController extends GetxController {
 
   var isFetching = true.obs;
 
+  // default 10.0.2.2
+
   TaskModel? model;
 
   Future<TaskModel> ambilData() async {
     Dio dio = Dio();
-    var res = await dio.get("http://10.0.2.2:3000/task");
+    var res = await dio.get("http://${ipAPI}:3000/task");
     TaskModel model = TaskModel.fromJson(res.data);
     return model;
   }
@@ -33,7 +36,7 @@ class HomeController extends GetxController {
     Dio dio = Dio();
     String data = jsonEncode(model);
     var res = await dio
-        .post("http://10.0.2.2:3000/task/edit", data: data)
+        .post("http://${ipAPI}:3000/task/edit", data: data)
         .then((value) => print(value.data));
     print("UPDATE DATA : ${data.toString()}");
     fetchData();
@@ -45,7 +48,7 @@ class HomeController extends GetxController {
     Dio dio = Dio();
     String data = jsonEncode(model);
     var res = await dio
-        .post("http://10.0.2.2:3000/task/delete", data: data)
+        .post("http://${ipAPI}:3000/task/delete", data: data)
         .then((value) => print(value.data));
     print("DELETE DATA : ${data.toString()}");
     fetchData();
@@ -56,7 +59,7 @@ class HomeController extends GetxController {
     Dio dio = Dio();
     String data = jsonEncode(model);
     var res = await dio
-        .post("http://10.0.2.2:3000/task/add", data: data)
+        .post("http://${ipAPI}:3000/task/add", data: data)
         .then((value) => print(value.data));
     print("ADD DATA : ${data.toString()}");
     fetchData();
