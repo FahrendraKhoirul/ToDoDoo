@@ -91,4 +91,15 @@ class HomeController extends GetxController {
     taskReminder.value.text = "";
     taskRepeat.value.text = "";
   }
+
+
+
+  List<String> nama =[];
+
+  //create forEach random number and add to nama
+  void createRandomNumber() {
+    for (int i = 0; i < 10; i++) {
+      nama.add(i.toString());
+    }
+  } 
 }
